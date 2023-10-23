@@ -14,7 +14,8 @@
         mat-icon-button        
         color="warn"
         [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
-        (click)="removeFromReadingList(b)"
+        data-testing="removing-item"
+        (click)="removeFromReadingList(b)"        
       >
         <mat-icon>remove_circle</mat-icon>
       </button>
@@ -22,5 +23,5 @@
   </div>
 </ng-container>
 <ng-template #empty>
-  <p class="empty">You haven't added any books to your reading list yet.</p>
+  <p class="empty">You did not added any books to your reading list yet.</p>
 </ng-template>
