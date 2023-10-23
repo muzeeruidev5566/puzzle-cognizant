@@ -8,9 +8,9 @@ import { getTotalUnread } from '@tmo/books/data-access';
   styleUrls: ['./total-count.component.scss']
 })
 export class TotalCountComponent implements OnInit {
-  totalUnread$ = this.store.select(getTotalUnread);
+  public totalUnread$ = this._store.select(getTotalUnread);
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly _store: Store) {}
 
-  ngOnInit(): void {}
+ public ngOnInit(): void {}
 }

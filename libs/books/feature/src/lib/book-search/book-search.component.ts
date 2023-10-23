@@ -16,47 +16,47 @@ import { Book } from '@tmo/shared/models';
   styleUrls: ['./book-search.component.scss']
 })
 export class BookSearchComponent implements OnInit {
-  books: ReadingListBook[];
+  public books: ReadingListBook[];
 
-  searchForm = this.fb.group({
+  public searchForm = this._fb.group({
     term: ''
   });
 
   constructor(
-    private readonly store: Store,
-    private readonly fb: FormBuilder
+    private readonly _store: Store,
+    private readonly _fb: FormBuilder
   ) {}
 
-  get searchTerm(): string {
+  public get searchTerm(): string {
     return this.searchForm.value.term;
   }
 
-  ngOnInit(): void {
-    this.store.select(getAllBooks).subscribe(books => {
+  public ngOnInit(): void {
+    this._store.select(getAllBooks).subscribe(books => {
       this.books = books;
     });
   }
 
-  formatDate(date: void | string) {
+  public formatDate(date: void | string) {
     return date
       ? new Intl.DateTimeFormat('en-US').format(new Date(date))
       : undefined;
   }
 
-  addBookToReadingList(book: Book) {
-    this.store.dispatch(addToReadingList({ book }));
+  public addBookToReadingList(book: Book) {
+    this._store.dispatch(addToReadingList({ book }));
   }
 
-  searchExample() {
+  public searchExample() {
     this.searchForm.controls.term.setValue('javascript');
     this.searchBooks();
   }
 
-  searchBooks() {
+ public  searchBooks() {
     if (this.searchForm.value.term) {
-      this.store.dispatch(searchBooks({ term: this.searchTerm }));
+      this._store.dispatch(searchBooks({ term: this.searchTerm }));
     } else {
-      this.store.dispatch(clearSearch());
+      this._store.dispatch(clearSearch());
     }
   }
 }

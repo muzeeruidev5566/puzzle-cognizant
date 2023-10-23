@@ -8,11 +8,11 @@ import { getReadingList, removeFromReadingList } from '@tmo/books/data-access';
   styleUrls: ['./reading-list.component.scss']
 })
 export class ReadingListComponent {
-  readingList$ = this.store.select(getReadingList);
+  public readingList$ = this._store.select(getReadingList);
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly _store: Store) {}
 
-  removeFromReadingList(item) {
-    this.store.dispatch(removeFromReadingList({ item }));
+  public removeFromReadingList(item) {
+    this._store.dispatch(removeFromReadingList({ item }));
   }
 }
